@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+    nginx:
+        build:
+            context: .
+            dockerfile: Dockerfile-nginx
+
+        volumes:
+            - ./syfmony/:/var/www/html
+        ports:
+            - 8002:80
+        networks:
+            - local
+
+    php:
+        build:
+            context: .
+            dockerfile: Dockerfile-php
+        environment:
+            APP_ENV: dev
+
+        volumes:
+            - ./syfmony/:/var/www/html
+        networks:
+            - local
+
+networks:
+    local:

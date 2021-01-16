@@ -1,0 +1,10 @@
+framework:
+    http_client:
+        scoped_clients:
+            weather.client:
+                base_uri: 'http://api.weatherapi.com'
+                query:
+                    key: '%env(string:WEATHER_API_KEY)%'
+                    days: 2 # default 2 days
+            musement.client:
+                base_uri: 'https://api.musement.com'
