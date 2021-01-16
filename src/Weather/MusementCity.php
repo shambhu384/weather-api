@@ -9,6 +9,8 @@ use Symfony\Component\HttpClient\Exception\TransportException;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\HttpCache\Store;
 use Symfony\Component\HttpClient\CachingHttpClient;
+use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
+use Symfony\Component\HttpClient\Exception\ServerException;
 
 class MusementCity implements CityInterface
 {
