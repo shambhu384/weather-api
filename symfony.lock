@@ -20,6 +20,19 @@
     "doctrine/lexer": {
         "version": "1.2.1"
     },
+    "nelmio/api-doc-bundle": {
+        "version": "3.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "3.0",
+            "ref": "c8e0c38e1a280ab9e37587a8fa32b251d5bc1c94"
+        },
+        "files": [
+            "config/packages/nelmio_api_doc.yaml",
+            "config/routes/nelmio_api_doc.yaml"
+        ]
+    },
     "nikic/php-parser": {
         "version": "v4.10.4"
     },
@@ -159,6 +172,9 @@
     "symfony/mime": {
         "version": "v4.4.18"
     },
+    "symfony/options-resolver": {
+        "version": "v4.4.18"
+    },
     "symfony/phpunit-bridge": {
         "version": "5.1",
         "recipe": {
@@ -235,5 +251,8 @@
     },
     "webmozart/assert": {
         "version": "1.9.1"
+    },
+    "zircote/swagger-php": {
+        "version": "3.1.0"
     }
 }

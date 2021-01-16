@@ -1,0 +1,85 @@
+nelmio_api_doc:
+    models: { use_jms: false }
+
+    media_types:
+        # Default:
+        - json
+    documentation:
+        info:
+            title: Weather API
+            description: Weather API
+            version: 1.0.0
+
+        components:
+            schemas:
+                Weather:
+                    properties:
+                        cityName:
+                            type: string
+                        weatherType:
+                            type: string
+                        date:
+                            type: string
+                    type: object
+                    xml:
+                        name: "Weather"
+            parameters:
+                city:
+                    name: "city"
+                    in: "path"
+                    description: "City name"
+                    required: true
+                    schema:
+                        type: "string"
+                forecastday:
+                    name: "forecastday"
+                    in: "path"
+                    description: "Day or date"
+                    required: true
+                    schema:
+                        type: "string"
+        paths:
+            /weathers:
+                post:
+                    tags:
+                        - Weather
+                    summary: Create a Weather resource.
+                    requestBody:
+                        description: Save weather
+                        required: true
+                        content:
+                            application/json:
+                                schema:
+                                    $ref: "#/components/schemas/Weather"
+                    responses:
+                        '200':
+                            description: Returned when successful
+                        '503':
+                            description: Returned when the service is unavailable
+                        '400':
+                            description: Returned when the form has errors.
+            /cities/{id}/weather/{forecastday}:
+                get:
+                    tags:
+                        - City
+                    operationId: "Get weather by cities"
+                    parameters:
+                        - "ref": "#/components/parameters/city"
+                        - "ref": "#/components/parameters/forecastday"
+                    responses:
+                        '200':
+                            description: Returned when successful
+                            content:
+                                application/json:
+                                    schema:
+                                        type: "array"
+                                        items:
+                                            $ref: "#/components/schemas/Weather"
+                        '404':
+                            description: Returned when resource is not found
+                        '503':
+                            description: Returned when the service is unavailable.
+    areas: # to filter documented areas
+        path_patterns:
+             - ^/api(?!/doc$)
+
